@@ -1,0 +1,23 @@
+{
+  "name": "smv4-apis",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "NODE_ENV=dev nodemon app.js",
+    "start:dev": "NODE_ENV=dev nodemon app.js"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "express-rest-response": "^1.2.0",
+    "express-session": "^1.15.6",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "mhash": "^2.1.9",
+    "morgan": "~1.9.0",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.3",
+    "sequelize": "^4.37.6"
+  }
+}
