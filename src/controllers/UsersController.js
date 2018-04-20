@@ -3,6 +3,9 @@
 //     generateToken = require('../auth/generateToken'),
 //     { extractToken } = require('../auth/authorize'),
 var models = require('../db/models');
+const express = require('express'),
+  app = express(),
+  mailer = require('express-mailer');
 var commonComponent = require('../db/components/common_component');
 module.exports = {
     name: 'users',
@@ -85,6 +88,22 @@ module.exports = {
         test : function (req, res, next){
             res.rest.success('Logged out successfully!');
         },
+
+        testemail : function(req, res, next){
+            
+            res.mailer.send('email', {
+                to: 'prateek.jadhav@a3logics.in', 
+                subject: 'Test Email', 
+              }, function (err) {
+                if (err) {
+                  // handle error 
+                  console.log(err);
+                  res.send('There was an error sending the email');
+                  return;
+                }
+                res.send('Email Sent');
+              });
+        }
         
     }
 }

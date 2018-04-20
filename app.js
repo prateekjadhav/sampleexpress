@@ -4,6 +4,7 @@ const { port, apiPrefix, mobApiPrefix } = require('./config');
 const config = require('./config');
 const express = require('express'),
   app = express(),
+  mailer = require('express-mailer');
   bodyParser = require('body-parser'),
   // expCtrl = require('express-controllers-routes'),
   expCtrl = require('./src/utilities/routes-generator'),
@@ -11,14 +12,25 @@ const express = require('express'),
   session = require('express-session');
 
 // app.use(require('cors')());
-
+app.set('views', __dirname + '/src/view');
+app.set('view engine', 'jade');
 //express-rest-response middleware configuration  
 app.use(restResponse({
   showStatusCode: true,
   showDefaultMessage: true
 }));
 
-
+mailer.extend(app, {
+  from: 'no-reply@example.com',
+  host: 'smtp.gmail.com', // hostname 
+  secureConnection: true, // use SSL 
+  port: 465, // port for secure SMTP 
+  transportMethod: 'SMTP', // default is SMTP. Accepts anything that nodemailer accepts 
+  auth: {
+    user: 'prateek.jadhav@a3logics.in',
+    pass: 'Prateek@1331'
+  }
+});
 
 
 //using express-session middleware
